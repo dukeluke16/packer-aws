@@ -5,7 +5,7 @@
 # Pull base image.
 FROM alpine:3.7
 MAINTAINER Luke Thompson <luke@dukeluke.com>
-LABEL Description="This image provides a dockerized build environment containing Python, Ansible, Packer, AWS-CLI."
+LABEL Description="This image provides a dockerized build environment containing Python, Ansible, Packer, AWS-CLI, and Terraform."
 
 # Set environment variables.
 ENV HOME /root
@@ -18,14 +18,18 @@ WORKDIR /root
 # Service Build Dependencies
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache alpine-sdk libffi-dev build-base musl-dev libsodium-dev jq && \
+    apk add --no-cache alpine-sdk libffi-dev build-base musl-dev libsodium-dev jq wget && \
     apk add --no-cache openssl-dev ca-certificates && \
     apk add --no-cache git zsh go && \
     apk add --no-cache python py-pip python-dev py-setuptools && \
     pip install --upgrade pip pipenv setuptools awscli && \
     update-ca-certificates && \
     rm -f /tmp/* /etc/apk/cache/* && \
-    rm -r /root/.cache
+    rm -r /root/.cache && \
+    wget -O /tmp/terraform.zip -q https://releases.hashicorp.com/terraform/0.8.8/terraform_0.8.8_linux_amd64.zip && \
+    unzip /tmp/terraform.zip -d /usr/local/bin && \
+    rm -f /tmp/terraform.zip && \
+    chmod 755 /usr/local/bin/terraform
 
 # configure go
 ENV GOPATH $HOME/go
