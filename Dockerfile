@@ -20,7 +20,7 @@ RUN apk update && \
     apk upgrade && \
     apk add --no-cache alpine-sdk libffi-dev build-base musl-dev libsodium-dev jq wget unzip && \
     apk add --no-cache openssl-dev ca-certificates && \
-    apk add --no-cache git zsh go && \
+    apk add --no-cache git zsh bash go && \
     apk add --no-cache python py-pip python-dev py-setuptools && \
     pip install --upgrade pip pipenv setuptools awscli && \
     update-ca-certificates && \
