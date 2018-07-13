@@ -1,12 +1,9 @@
 #!/bin/sh
 set -e
 
-docker build -t dukeluke16/packer-aws .
+REGISTRY=dukeluke16
+IMAGE_NAME=packer-aws
+TAG=$1
 
-docker tag dukeluke16/packer-aws:$1
-
-docker tag dukeluke16/packer-aws:latest
-
-docker push dukeluke16/packer-aws:$1
-
-docker push dukeluke16/packer-aws:latest
+docker build -t ${REGISTRY}/${IMAGE_NAME}/${TAG} -t ${REGISTRY}/${IMAGE_NAME}/latest .
+docker push ${REGISTRY}/${IMAGE_NAME}

@@ -6,7 +6,16 @@ then
   WORKSPACE=$(pwd)
 fi
 
-DOCKER_IMAGE=dukeluke16/packer-aws:latest
+REGISTRY=dukeluke16
+IMAGE_NAME=packer-aws
+TAG=$1
+
+if [ -z $TAG ]
+then
+  TAG=latest
+fi
+
+DOCKER_IMAGE=${REGISTRY}/${IMAGE_NAME}/${TAG}
 
 docker pull $DOCKER_IMAGE
 
