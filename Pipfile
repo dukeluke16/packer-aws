@@ -7,4 +7,4 @@ pylint = "*"
 
 [packages]
 pywinrm = "*"
-ansible = "*"
+ansible = '<2.6.0'

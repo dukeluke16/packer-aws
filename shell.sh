@@ -15,7 +15,7 @@ then
   TAG=latest
 fi
 
-DOCKER_IMAGE=${REGISTRY}/${IMAGE_NAME}/${TAG}
+DOCKER_IMAGE=${REGISTRY}/${IMAGE_NAME}:${TAG}
 
 docker pull $DOCKER_IMAGE
 
