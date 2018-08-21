@@ -21,7 +21,7 @@ RUN apk update && \
     apk add --no-cache alpine-sdk libffi-dev build-base musl-dev libsodium-dev jq wget unzip perl && \
     apk add --no-cache openssl-dev ca-certificates && \
     apk add --no-cache git zsh bash go && \
-    apk add --no-cache python py-pip python-dev py-setuptools && \
+    apk add --no-cache python py-pip python-dev py-setuptools openssh && \
     pip install --upgrade pip pipenv setuptools awscli && \
     update-ca-certificates && \
     rm -f /tmp/* /etc/apk/cache/* && \
