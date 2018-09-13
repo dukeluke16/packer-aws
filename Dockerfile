@@ -26,7 +26,7 @@ RUN apk update && \
     update-ca-certificates && \
     rm -f /tmp/* /etc/apk/cache/* && \
     rm -r /root/.cache && \
-    wget -O /tmp/terraform.zip -q https://releases.hashicorp.com/terraform/0.8.8/terraform_0.8.8_linux_amd64.zip && \
+    wget -O /tmp/terraform.zip -q https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip && \
     unzip /tmp/terraform.zip -d /usr/local/bin && \
     rm -f /tmp/terraform.zip && \
     chmod 755 /usr/local/bin/terraform
