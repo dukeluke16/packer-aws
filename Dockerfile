@@ -3,7 +3,7 @@
 #
 
 # Pull base image.
-FROM alpine:3.7
+FROM alpine:3.8
 MAINTAINER Luke Thompson <luke@dukeluke.com>
 LABEL Description="This image provides a dockerized build environment containing Python, Ansible, Packer, AWS-CLI, and Terraform."
 
@@ -22,6 +22,7 @@ RUN apk update && \
     apk add --no-cache openssl-dev ca-certificates && \
     apk add --no-cache git zsh bash go && \
     apk add --no-cache python py-pip python-dev py-setuptools openssh && \
+    apk add --no-cache ansible && \
     pip install --upgrade pip pipenv setuptools awscli && \
     update-ca-certificates && \
     rm -f /tmp/* /etc/apk/cache/* && \
