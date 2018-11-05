@@ -1,18 +1,17 @@
-#!/bin/sh
-set -e
+#!/bin/bash
+# shellcheck disable=2048,2086
+set -euo pipefail
 
-if [ -z $WORKSPACE ]
-then
-  WORKSPACE=$(pwd)
-fi
+WORKSPACE="${WORKSPACE:=$(pwd)}"
 
-REGISTRY=dukeluke16
-IMAGE_NAME=packer-aws
-TAG=$1
-
-if [ -z $TAG ]
-then
+REGISTRY="dukeluke16"
+IMAGE_NAME="packer-aws"
+TAG=""
+if [ $# -eq 0 ]; then
   TAG=latest
+else
+  TAG="$1"
+  shift
 fi
 
 DOCKER_IMAGE=${REGISTRY}/${IMAGE_NAME}:${TAG}
